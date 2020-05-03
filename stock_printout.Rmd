@@ -1,0 +1,12 @@
+---
+title: "Stock"
+output: html_document
+---
+
+```{r, include=FALSE}
+source("My_Stock.R")
+```
+
+```{r, echo=FALSE}
+newdf
+```
