@@ -3,7 +3,7 @@ library(tidyverse)
 library(haven)
 library(scales)
 
-h <-read_csv2("D:/Dropbox/R-Kurs/stock_symbols.csv")
+h <-read_csv2("./stock_symbols.csv")
 
 stock_list <- h$Symbol
 stockname_list <- h$Name
