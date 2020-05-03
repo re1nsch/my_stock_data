@@ -3,29 +3,28 @@ library(tidyverse)
 library(haven)
 library(scales)
 
-h <-read_csv2("./stock_symbols.csv")
+stocklist_full <-read_csv2("./stock_symbols.csv")
+stocklist_symbole <- stocklist_full$Symbole
+stocklist_name <- stocklist_full$Name
 
-stock_list <- h$Symbol
-stockname_list <- h$Name
+df_stocklist <- data.frame(0,0,0,0,0,0,0,0,0)
+names(df_stocklist)<-c("Symbol",
+                       "Name",
+                       "Current",
+                       "Max_Total",
+                       "Min2008",
+                       "Max2020",
+                       "Min2020",
+                       "DropCorona",
+                       "PlusCorona")
+df_stocklist <- rbind(df_stocklist, NULL)
 
-df<-data.frame(0,0,0,0,0,0,0,0,0)
-names(df)<-c("Symbol",
-             "Name",
-             "Current",
-             "Max_Total",
-             "Min2008",
-             "Max2020",
-             "Min2020",
-             "DropCorona",
-             "PlusCorona")
-newdf <- rbind(df, NULL)
-
-for (idx in seq(length(stock_list))){
-  stock_index <- stock_list[idx]
-  stockname_index <- stockname_list[idx]
+for (idx in seq(length(stocklist_symbole))){
+  stocksymbole_index <- stocklist_symbole[idx]
+  stockname_index <- stocklist_name[idx]
   
   raw <- NULL
-  raw <- getSymbols(stock_index, from = "2000-01-01", to = Sys.Date(), env=raw)
+  raw <- getSymbols(stocksymbole_index, from = "2000-01-01", to = Sys.Date(), env=raw)
   temp_df <- fortify(raw) %>% 
   setNames(c("Date",
              "Open",
@@ -54,7 +53,7 @@ for (idx in seq(length(stock_list))){
   drop_corona <- 100/max2020*abs(min2020-max2020)
   rise_corona <- 100/max2020*abs(current-max2020)
   
-  df<-data.frame(stock_index,
+  df<-data.frame(stocksymbole_index,
                  stockname_index,
                  round(current,1),
                  round(max_total,1),
@@ -74,10 +73,10 @@ for (idx in seq(length(stock_list))){
                "DropCorona",
                "PlusCorona")
 
-  newdf <- rbind(df, newdf)
+  df_stocklist <- rbind(df, df_stocklist)
 }
-newdf <- newdf[-c(nrow(newdf)),]
-newdf <- newdf %>%
+df_stocklist <- df_stocklist[-c(nrow(df_stocklist)),]
+df_stocklist <- df_stocklist %>%
   map_df(rev)
 
-percent(newdf$DropCorona/100)
+percent(df_stocklist$DropCorona/100)
