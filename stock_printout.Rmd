@@ -4,9 +4,26 @@ output: html_document
 ---
 
 ```{r,read_data,include=FALSE}
-source("My_Stock.R")
+source("stock_overview.R")
 ```
 
 ```{r,output_data,echo=FALSE}
-newdf
+library(kableExtra)
+library(dplyr)
+library(formattable)
+
+df_stocklist %>%
+  mutate(
+    Current = cell_spec(Current, bold = T),
+    `Max2020 vs Min2020` = ifelse(`Max2020 vs Min2020` < 0,
+                  color_tile("red", "white")(`Max2020 vs Min2020`),
+                  color_tile("green", "white")(`Max2020 vs Min2020`)),
+    `Max2020 vs Current` = ifelse(`Max2020 vs Current` > 0,
+                  color_tile("green", "white")(`Max2020 vs Current`),
+                  color_tile("red", "white")(`Max2020 vs Current`))
+  ) %>%
+  select(everything()) %>%
+  kable(escape = F) %>%
+  kable_styling("hover", full_width = F) %>%
+  column_spec(5, width = "3cm")
 ```
