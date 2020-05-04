@@ -1,12 +1,12 @@
 ---
-title: "Stock"
+title: "Stock_Data"
 output: html_document
 ---
 
-```{r, include=FALSE}
+```{r,read_data,include=FALSE}
 source("My_Stock.R")
 ```
 
-```{r, echo=FALSE}
+```{r,output_data,echo=FALSE}
 newdf
 ```
