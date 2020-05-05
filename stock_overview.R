@@ -3,7 +3,7 @@ library(tidyverse)
 library(haven)
 library(scales)
 
-stocklist_full <-read_csv2("./stock_symbols.csv")
+stocklist_full <-read_csv2("./data/stock_symbols.csv")
 stocklist_symbole <- stocklist_full$Symbole
 stocklist_name <- stocklist_full$Name
 
@@ -11,12 +11,12 @@ df_stocklist <- data.frame(0,0,0,0,0,0,0,0,0)
 names(df_stocklist) <- c("Symbol",
                          "Name",
                          "Current",
-                         "Max_Total",
+                         "Maxtotal",
                          "Min2008",
                          "Max2020",
                          "Min2020",
-                         "Max2020 vs Min2020",
-                         "Max2020 vs Current")
+                         "MaxMin2020",
+                         "MaxCur2020")
 df_stocklist <- rbind(df_stocklist, NULL)
 
 for (idx in seq(length(stocklist_symbole))) {
@@ -49,44 +49,44 @@ for (idx in seq(length(stocklist_symbole))) {
     summarize(tmp = max(Close, na.rm = TRUE)) %>%
     `[[`(1)
   
-  max_total <- temp_df %>%
+  maxtotal <- temp_df %>%
     filter(Date<=Sys.Date()) %>%
     summarize(tmp = max(Close, na.rm = TRUE)) %>%
     `[[`(1)
   
   current <- temp_df$Close[nrow(temp_df)]
   
-  max_vs_corona <- 100/max2020*(min2020-max2020)
-  max_vs_current <- 100/max2020*(current-max2020)
+  maxmin2020 <- 100/max2020*(min2020-max2020)
+  maxcur2020 <- 100/max2020*(current-max2020)
 
   df_tmp <- data.frame(stocksymbole_index,
                        stockname_index,
                        round(current,1),
-                       round(max_total,1),
+                       round(maxtotal,1),
                        round(min2008,1),
                        round(max2020,1),
                        round(min2020,1),
-                       round(max_vs_corona,1),
-                       round(max_vs_current,1))
+                       round(maxmin2020,1),
+                       round(maxcur2020,1))
   names(df_tmp) <- c("Symbol",
                      "Name",
                      "Current",
-                     "Max_Total",
+                     "Maxtotal",
                      "Min2008",
                      "Max2020",
                      "Min2020",
-                     "Max2020 vs Min2020",
-                     "Max2020 vs Current")
+                     "MaxMin2020",
+                     "MaxCur2020")
   df_stocklist <- rbind(df_tmp, df_stocklist)
 }
 
 remove(min2008,
        min2020,
        max2020,
-       max_total,
+       maxtotal,
        current,
-       max_vs_corona,
-       max_vs_current,
+       maxmin2020,
+       maxcur2020,
        idx,
        stocksymbole_index,
        stockname_index,
@@ -98,10 +98,11 @@ remove(min2008,
        raw_stockdata)
 
 df_stocklist <- df_stocklist[-c(nrow(df_stocklist)),]
-df_stocklist <- df_stocklist %>%
-  map_df(rev)
+df_stocklist$Name <- as.character(df_stocklist$Name)
+df_stocklist$Symbol <- as.character(df_stocklist$Symbol)
+df_stocklist <- df_stocklist[order(df_stocklist$Name),]
 
-# percent(df_stocklist$DropCorona/100)
 
+#percent(df_stocklist$DropCorona/100)
 #raw_stockdata <- NULL
 #raw_stockdata <- getSymbols("L0CK.F", from = "2000-01-01", to = Sys.Date(), env=raw_stockdata)

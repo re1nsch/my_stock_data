@@ -4,26 +4,42 @@ output: html_document
 ---
 
 ```{r,read_data,include=FALSE}
+library(kableExtra)
+library(dplyr)
+library(formattable)
+library(DT)
+
 source("stock_overview.R")
 ```
 
 ```{r,output_data,echo=FALSE}
-library(kableExtra)
-library(dplyr)
-library(formattable)
+df_stocklist1 <- df_stocklist %>%
+  filter(`MaxCur2020` >= 0) %>% 
+  mutate(`MaxCur2020` = color_tile("transparent","green")(`MaxCur2020`))
 
-df_stocklist %>%
-  mutate(
-    Current = cell_spec(Current, bold = T),
-    `Max2020 vs Min2020` = ifelse(`Max2020 vs Min2020` < 0,
-                  color_tile("red","transparent")(`Max2020 vs Min2020`),
-                  color_tile("transparent","green")(`Max2020 vs Min2020`)),
-    `Max2020 vs Current` = ifelse(`Max2020 vs Current` > 0,
-                  color_tile("transparent","green")(`Max2020 vs Current`),
-                  color_tile("red","transparent")(`Max2020 vs Current`))
-  ) %>%
-  select(everything()) %>%
-  kable(escape = F) %>%
-  kable_styling("hover", full_width = F) %>%
-  column_spec(5, width = "3cm")
+df_stocklist2 <- df_stocklist %>%
+  filter(`MaxCur2020` < 0) %>% 
+  mutate(`MaxCur2020` = color_tile("red","transparent")(`MaxCur2020`))
+
+df_stocklist <- rbind(df_stocklist1, df_stocklist2)
+df_stocklist <- df_stocklist[order(df_stocklist$Name),]
+
+df_stocklist1 <- df_stocklist %>%
+  filter(`MaxMin2020` >= 0) %>% 
+  mutate(`MaxMin2020` = color_tile("transparent","green")(`MaxMin2020`))
+
+df_stocklist2 <- df_stocklist %>%
+  filter(`MaxMin2020` < 0) %>% 
+  mutate(`MaxMin2020` = color_tile("red","transparent")(`MaxMin2020`))
+
+df_stocklist <- rbind(df_stocklist1, df_stocklist2)
+df_stocklist <- df_stocklist[order(df_stocklist$Name),]
+
+as.datatable(formattable(df_stocklist))
+
+#df_stocklist %>%
+#  select(everything()) %>%
+#  kable(escape = F) %>%
+#  kable_styling("hover", full_width = F) %>%
+#  column_spec(5, width = "3cm")
 ```
