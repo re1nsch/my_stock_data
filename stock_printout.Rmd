@@ -1,6 +1,6 @@
 ---
 title: "Stock_Data"
-output: html_document
+output: index
 ---
 
 ```{r,read_data,include=FALSE}
