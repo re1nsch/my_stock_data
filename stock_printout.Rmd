@@ -14,6 +14,17 @@ source("stock_overview.R")
 
 ```{r,output_data,echo=FALSE}
 df_stocklist1 <- df_stocklist %>%
+  filter(`Weekly` >= 0) %>% 
+  mutate(`Weekly` = color_tile("transparent","green")(`Weekly`))
+
+df_stocklist2 <- df_stocklist %>%
+  filter(`Weekly` < 0) %>% 
+  mutate(`Weekly` = color_tile("red","transparent")(`Weekly`))
+
+df_stocklist <- rbind(df_stocklist1, df_stocklist2)
+df_stocklist <- df_stocklist[order(df_stocklist$Name),]
+
+df_stocklist1 <- df_stocklist %>%
   filter(`MaxCur2020` >= 0) %>% 
   mutate(`MaxCur2020` = color_tile("transparent","green")(`MaxCur2020`))
 
@@ -25,7 +36,7 @@ df_stocklist <- rbind(df_stocklist1, df_stocklist2)
 df_stocklist <- df_stocklist[order(df_stocklist$Name),]
 
 df_stocklist1 <- df_stocklist %>%
-  filter(`MaxMin2020` >= 0) %>% 
+  filter(MaxMin2020 >= 0) %>%
   mutate(`MaxMin2020` = color_tile("transparent","green")(`MaxMin2020`))
 
 df_stocklist2 <- df_stocklist %>%
@@ -35,11 +46,9 @@ df_stocklist2 <- df_stocklist %>%
 df_stocklist <- rbind(df_stocklist1, df_stocklist2)
 df_stocklist <- df_stocklist[order(df_stocklist$Name),]
 
-as.datatable(formattable(df_stocklist))
-
-#df_stocklist %>%
-#  select(everything()) %>%
-#  kable(escape = F) %>%
-#  kable_styling("hover", full_width = F) %>%
-#  column_spec(5, width = "3cm")
+as.datatable(formattable(df_stocklist),
+             class = 'cell-border stripe',
+             rownames = FALSE) %>% 
+  formatCurrency(c('Current','Maxtotal','Min2008','Max2020','Min2020'), currency = "€") %>%
+  formatStyle('Current',  backgroundColor = 'lightgrey', fontWeight = 'bold')
 ```
