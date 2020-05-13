@@ -6,6 +6,8 @@ library(scales)
 stocklist_full <-read_csv2("./data/stock_symbols.csv")
 stocklist_symbole <- stocklist_full$Symbole
 stocklist_name <- stocklist_full$Name
+stocklist_currency <- stock$Currency
+stocklist_category <- stock$Category
 
 df_stocklist <- data.frame(0,0,0,0,0,0,0,0,0,0)
 names(df_stocklist) <- c("Symbol",
