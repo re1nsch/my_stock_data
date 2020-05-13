@@ -13,6 +13,8 @@ source("stock_overview.R")
 ```
 
 ```{r,output_data,echo=FALSE}
+Sys.Date()
+
 df_stocklist1 <- df_stocklist %>%
   filter(`Weekly` >= 0) %>% 
   mutate(`Weekly` = color_tile("transparent","green")(`Weekly`))

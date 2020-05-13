@@ -3,15 +3,16 @@ library(tidyverse)
 library(haven)
 library(scales)
 
-stocklist_full <-read_csv2("./data/stock_symbols.csv")
+stocklist_full <- read_csv2("./data/stock_symbols.csv")
 stocklist_symbole <- stocklist_full$Symbole
 stocklist_name <- stocklist_full$Name
-stocklist_currency <- stock$Currency
-stocklist_category <- stock$Category
+stocklist_currency <- stocklist_full$Currency
+stocklist_category <- stocklist_full$Category
 
-df_stocklist <- data.frame(0,0,0,0,0,0,0,0,0,0)
+df_stocklist <- data.frame(0,0,0,0,0,0,0,0,0,0,0)
 names(df_stocklist) <- c("Symbol",
                          "Name",
+                         "Category",
                          "Current",
                          "Maxtotal",
                          "Min2008",
@@ -25,6 +26,7 @@ df_stocklist <- rbind(df_stocklist, NULL)
 for (idx in seq(length(stocklist_symbole))) {
   stocksymbole_index <- stocklist_symbole[idx]
   stockname_index <- stocklist_name[idx]
+  stockcategory_index <- stocklist_category[idx]
   
   raw_stockdata <- NULL
   raw_stockdata <- getSymbols(stocksymbole_index, from = "2000-01-01", to = Sys.Date(), env=raw_stockdata)
@@ -66,6 +68,7 @@ for (idx in seq(length(stocklist_symbole))) {
 
   df_tmp <- data.frame(stocksymbole_index,
                        stockname_index,
+                       stockcategory_index,
                        round(current,1),
                        round(maxtotal,1),
                        round(min2008,1),
@@ -76,6 +79,7 @@ for (idx in seq(length(stocklist_symbole))) {
                        round(maxcur2020,1))
   names(df_tmp) <- c("Symbol",
                      "Name",
+                     "Category",
                      "Current",
                      "Maxtotal",
                      "Min2008",
@@ -97,8 +101,10 @@ remove(min2008,
        idx,
        stocksymbole_index,
        stockname_index,
+       stockcategory_index,
        stocklist_name,
        stocklist_symbole,
+       stocklist_currency,
        df_tmp,
        temp_df,
        stocklist_full,
@@ -109,6 +115,7 @@ remove(min2008,
 df_stocklist <- df_stocklist[-c(nrow(df_stocklist)),]
 df_stocklist$Name <- as.character(df_stocklist$Name)
 df_stocklist$Symbol <- as.character(df_stocklist$Symbol)
+df_stocklist$Category <- as.character(df_stocklist$Category)
 df_stocklist <- df_stocklist[order(df_stocklist$Name),]
 
 
