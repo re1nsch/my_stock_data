@@ -40,7 +40,7 @@ for (idx in seq(length(stocklist_symbole))) {
              "Close",
              "Volume",
              "Adjusted"))
-  
+  print(stockname_index)
   plot(temp_df$Date,temp_df$Close)
   
   min2008 <- temp_df %>%
