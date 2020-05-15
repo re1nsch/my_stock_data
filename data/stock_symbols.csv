@@ -9,14 +9,18 @@ ABEA.F;Alphabet A (ex Google);;€;US02079K3059
 AMZ.F;Amazon;Consume;€;US0231351067
 AWC.F;American Water Works Co Inc;;€;US0304201033
 1NBA.F;Anheuser-Busch InBev;;€;BE0974293251
+DP4B.F;AP Moeller Maersk;;€;
 APC.F;Apple Inc.;;€;US0378331005
+ADM.F;Archer Daniels Midland;;€;
 SOBA.F;AT&T Inc. (AT & T Inc.);;€;US00206R1023
 59A.F;Atlassian;;€;GB00BZ09BD16
 ABR.F;Barrick Gold Corp.;;€;CA0679011084
+BYW.F;BayWa AG;;€;
 BEI.F;Beiersdorf AG;Medical;€;DE0005200000
 BTC-EUR;Bitcoin;;€;
 PCE1.F;Booking Holdings Inc Registered Shs;;€;US09857L1089
 BRM.F;Bristol-Myers Squibb Co.;;€;US1101221083
+CTH.F;COSCO SHIPPING Ports Ltd;;€;
 CXU.F;Church & Dwight Co. Inc.;;€;US1713401024
 CTX.F;Citrix Systems Inc.;;€;US1773761002
 CCC3.F;Coca-Cola Co.;;€;US1912161007
@@ -32,6 +36,7 @@ FPMB.F;Freeport-McMoRan Inc;;€;US35671D8570
 NLM.F;FRoSTA AG;;€;DE0006069008
 WWG.F;GELSENWASSER AG;;€;DE0007760001
 GC=F;Gold;commodities;$;
+HLAG.F;Hapag-Lloyd;;€;
 HEI.F;HeidelbergCement AG;;€;DE0006047004
 HNK1.F;Heineken;;€;NL0000009165
 H9I.F;ICA Gruppen AB;;€;SE0000652216
@@ -45,6 +50,7 @@ JNJ.F;Johnson & Johnson;;€;US4781601046
 KU2.F;KUKA AG;;€;DE0006204407
 M4i.F;MasterCard Inc.;;€;US57636Q1040
 MSF.F;Microsoft Corp.;;€;US5949181045
+98M.F;MSC Industrial Direct Co. Inc.;;;
 NESM.F;Nestlé SA (Nestle);;€;CH0038863350
 FP3.F;NextEra Energy Inc;;€;US65339F1012
 NTH.F;Northrop Grumman Corp.;;€;US6668071029
@@ -69,3 +75,4 @@ UNVB.F;Unilever plc;;€;GB00B10RZP78
 3V64.F;Visa Inc.;;€;US92826C8394
 WDP.F;Walt Disney;;€;US2546871060
 1WF.F;Wayfair Inc (A);;€;US94419L1017
+WDI.F;Wirecard;;€;

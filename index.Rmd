@@ -3,7 +3,7 @@ title: "index"
 output: html_document
 ---
 
-```{r,read_data,include=FALSE}
+```{r,read_data,include=TRUE}
 library(kableExtra)
 library(dplyr)
 library(formattable)
@@ -14,6 +14,17 @@ source("stock_overview.R")
 
 ```{r,output_data,echo=FALSE}
 Sys.Date()
+
+df_stocklist1 <- df_stocklist %>%
+  filter(`Daily` >= 0) %>% 
+  mutate(`Daily` = color_tile("transparent","green")(`Daily`))
+
+df_stocklist2 <- df_stocklist %>%
+  filter(`Daily` < 0) %>% 
+  mutate(`Daily` = color_tile("red","transparent")(`Daily`))
+
+df_stocklist <- rbind(df_stocklist1, df_stocklist2)
+df_stocklist <- df_stocklist[order(df_stocklist$Name),]
 
 df_stocklist1 <- df_stocklist %>%
   filter(`Weekly` >= 0) %>% 
