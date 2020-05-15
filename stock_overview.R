@@ -41,7 +41,7 @@ for (idx in seq(length(stocklist_symbole))) {
              "Volume",
              "Adjusted"))
   print(stockname_index)
-  plot(temp_df$Date,temp_df$Close)
+  plot(temp_df$Date,temp_df$Close, type = "l")
   
   min2008 <- temp_df %>%
     filter(Date<="2010-01-01" & Date>="2007-01-01") %>%
