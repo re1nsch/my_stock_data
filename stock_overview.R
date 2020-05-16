@@ -3,6 +3,7 @@ library(tidyverse)
 library(haven)
 library(scales)
 library(ggplot2)
+library(dplyr)
 
 stocklist_full <- read_csv2("./data/stock_symbols.csv")
 stocklist_symbole <- stocklist_full$Symbole
@@ -31,7 +32,13 @@ for (idx in seq(length(stocklist_symbole))) {
   stockcategory_index <- stocklist_category[idx]
   
   raw_stockdata <- NULL
-  raw_stockdata <- getSymbols(stocksymbole_index, from = "2000-01-01", to = Sys.Date(), env=raw_stockdata)
+  suppressWarnings(
+    raw_stockdata <- getSymbols(
+      stocksymbole_index,
+      from = "2000-01-01",
+      to = Sys.Date(),
+      env=raw_stockdata))
+  
   temp_df <- fortify(raw_stockdata) %>% 
   setNames(c("Date",
              "Open",
@@ -40,8 +47,15 @@ for (idx in seq(length(stocklist_symbole))) {
              "Close",
              "Volume",
              "Adjusted"))
+  
   print(stockname_index)
-  plot(temp_df$Date,temp_df$Close, type = "l")
+  
+  par(mfrow=c(1,2))
+  plot(temp_df$Date,temp_df$Close, type = "l", col="blue")
+  
+  temp_df %>% 
+    filter(Date >= Sys.Date()-365) %>% 
+    with(plot(Date, Close, type = "l", col="red"))
   
   min2008 <- temp_df %>%
     filter(Date<="2010-01-01" & Date>="2007-01-01") %>%
