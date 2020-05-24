@@ -1,20 +1,19 @@
 ---
-title: "index"
+title: "My Stock Data"
 output: html_document
 ---
 
-```{r,read_data,include=TRUE}
+```{r,read_data, fig.width=15, fig.align="center", echo=FALSE,message = FALSE}
 library(kableExtra)
 library(dplyr)
 library(formattable)
 library(DT)
 
+Sys.Date()
 source("stock_overview.R")
 ```
 
 ```{r,output_data,echo=FALSE}
-Sys.Date()
-
 df_stocklist1 <- df_stocklist %>%
   filter(`Daily` >= 0) %>% 
   mutate(`Daily` = color_tile("transparent","green")(`Daily`))
