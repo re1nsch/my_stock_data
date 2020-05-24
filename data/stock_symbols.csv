@@ -1,78 +1,82 @@
 Symbole;Name;Category;Currency;ISIN
-MMM.F;3M Co.;;‚Ç¨;US88579Y1010
-ABJA.F;ABB (Asea Brown Boveri);;‚Ç¨;CH0012221716
-AIR.F;Airbus SE (ex EADS);;‚Ç¨;NL0000235190
-ABA.F;ALBA SE;;‚Ç¨;DE0006209901
-AQN;Algonquin Power & Utilities Corp;;‚Ç¨;CA0158571053
-AHLA.F;Alibaba;Consume;‚Ç¨;US01609W1027
-ABEA.F;Alphabet A (ex Google);;‚Ç¨;US02079K3059
-AMZ.F;Amazon;Consume;‚Ç¨;US0231351067
-AWC.F;American Water Works Co Inc;;‚Ç¨;US0304201033
-1NBA.F;Anheuser-Busch InBev;;‚Ç¨;BE0974293251
-DP4B.F;AP Moeller Maersk;;‚Ç¨;
-APC.F;Apple Inc.;;‚Ç¨;US0378331005
-ADM.F;Archer Daniels Midland;;‚Ç¨;
-SOBA.F;AT&T Inc. (AT & T Inc.);;‚Ç¨;US00206R1023
-59A.F;Atlassian;;‚Ç¨;GB00BZ09BD16
-ABR.F;Barrick Gold Corp.;;‚Ç¨;CA0679011084
-BYW.F;BayWa AG;;‚Ç¨;
-BEI.F;Beiersdorf AG;Medical;‚Ç¨;DE0005200000
-BTC-EUR;Bitcoin;;‚Ç¨;
-PCE1.F;Booking Holdings Inc Registered Shs;;‚Ç¨;US09857L1089
-BRM.F;Bristol-Myers Squibb Co.;;‚Ç¨;US1101221083
-CTH.F;COSCO SHIPPING Ports Ltd;;‚Ç¨;
-CXU.F;Church & Dwight Co. Inc.;;‚Ç¨;US1713401024
-CTX.F;Citrix Systems Inc.;;‚Ç¨;US1773761002
-CCC3.F;Coca-Cola Co.;;‚Ç¨;US1912161007
-CPA.F;Colgate-Palmolive Co.;;‚Ç¨;US1941621039
-^GDAXI;DAX;;‚Ç¨;
-GUI.F;Diageo plc;;‚Ç¨;GB0002374006
-7DB.F;Diamondback Energy Inc;;‚Ç¨;US25278X1090
+MMM.F;3M Co.;;Ä;US88579Y1010
+ABJA.F;ABB (Asea Brown Boveri);;Ä;CH0012221716
+AIR.F;Airbus SE (ex EADS);;Ä;NL0000235190
+ABA.F;ALBA SE;;Ä;DE0006209901
+AQN;Algonquin Power & Utilities Corp;;Ä;CA0158571053
+AHLA.F;Alibaba;Consume;Ä;US01609W1027
+ABEA.F;Alphabet A (ex Google);;Ä;US02079K3059
+AMZ.F;Amazon;Consume;Ä;US0231351067
+AWC.F;American Water Works Co Inc;;Ä;US0304201033
+1NBA.F;Anheuser-Busch InBev;;Ä;BE0974293251
+DP4B.F;AP Moeller Maersk;;Ä;
+APC.F;Apple Inc.;;Ä;US0378331005
+ADM.F;Archer Daniels Midland;;Ä;
+SOBA.F;AT&T Inc. (AT & T Inc.);;Ä;US00206R1023
+59A.F;Atlassian;;Ä;GB00BZ09BD16
+ABR.F;Barrick Gold Corp.;;Ä;CA0679011084
+BYW.F;BayWa AG;;Ä;
+BEI.F;Beiersdorf AG;Medical;Ä;DE0005200000
+BTC-EUR;Bitcoin;;Ä;
+PCE1.F;Booking Holdings Inc Registered Shs;;Ä;US09857L1089
+BRM.F;Bristol-Myers Squibb Co.;;Ä;US1101221083
+CTH.F;COSCO SHIPPING Ports Ltd;;Ä;
+CXU.F;Church & Dwight Co. Inc.;;Ä;US1713401024
+CTX.F;Citrix Systems Inc.;;Ä;US1773761002
+CCC3.F;Coca-Cola Co.;;Ä;US1912161007
+CPA.F;Colgate-Palmolive Co.;;Ä;US1941621039
+^GDAXI;DAX;;Ä;
+GUI.F;Diageo plc;;Ä;GB0002374006
+7DB.F;Diamondback Energy Inc;;Ä;US25278X1090
 ^DJI;Dow Jones;;$;
-HNL.F;Dr. H√∂nle AG - UV Technology;;‚Ç¨;DE0005157101
-ESWB.F;Essity AB Registered Shs -B-;;‚Ç¨;SE0009922164
-FUC.F;FANUC CORPORATION;;‚Ç¨;JP3802400006
-FPMB.F;Freeport-McMoRan Inc;;‚Ç¨;US35671D8570
-NLM.F;FRoSTA AG;;‚Ç¨;DE0006069008
-WWG.F;GELSENWASSER AG;;‚Ç¨;DE0007760001
+HNL.F;Dr. H‰nle AG - UV Technology;;Ä;DE0005157101
+ESWB.F;Essity AB Registered Shs -B-;;Ä;SE0009922164
+FUC.F;FANUC CORPORATION;;Ä;JP3802400006
+FPMB.F;Freeport-McMoRan Inc;;Ä;US35671D8570
+NLM.F;FRoSTA AG;;Ä;DE0006069008
+WWG.F;GELSENWASSER AG;;Ä;DE0007760001
+8GM.F;Genal Motors;;Ä;
 GC=F;Gold;commodities;$;
-HLAG.F;Hapag-Lloyd;;‚Ç¨;
-HEI.F;HeidelbergCement AG;;‚Ç¨;DE0006047004
-HNK1.F;Heineken;;‚Ç¨;NL0000009165
-H9I.F;ICA Gruppen AB;;‚Ç¨;SE0000652216
-IUI1.F;Intuitive Surgical Inc;;‚Ç¨;US46120E6023
-L0CK.F;iShares Digital Security UCITS ETF USD Acc;ETF;‚Ç¨;IE00BG0J4C88
-2B78.F;iShares Healthcare Innovation UCITS ETF USD (Acc);ETF;‚Ç¨;IE00BYZK4776
-URTH;iShares MSCI World ETF;ETF;‚Ç¨;IE00B4L5Y983
-IQQW.F;iShares MSCI World UCITS ETF USD (Dist);ETF;‚Ç¨;IE00B0M62Q58
-013A.F;JD.com Inc (spons. ADRs);;‚Ç¨;US47215P1066
-JNJ.F;Johnson & Johnson;;‚Ç¨;US4781601046
-KU2.F;KUKA AG;;‚Ç¨;DE0006204407
-M4i.F;MasterCard Inc.;;‚Ç¨;US57636Q1040
-MSF.F;Microsoft Corp.;;‚Ç¨;US5949181045
-98M.F;MSC Industrial Direct Co. Inc.;;;
-NESM.F;Nestl√© SA (Nestle);;‚Ç¨;CH0038863350
-FP3.F;NextEra Energy Inc;;‚Ç¨;US65339F1012
-NTH.F;Northrop Grumman Corp.;;‚Ç¨;US6668071029
-NOTA.F;Novartis AG;;‚Ç¨;CH0012005267
-NOVC.F;Novo Nordisk;;‚Ç¨;DK0060534915
-NVD.F;NVIDIA Corp.;;‚Ç¨;US67066G1040
-PER.F;Pernod Ricard S.A.;;‚Ç¨;FR0000120693
-PFE.F;Pfizer Inc.;Medical;‚Ç¨;US7170811035
-PRG.F;Procter & Gamble Co.;;‚Ç¨;US7427181091
-RHO6.F;Roche Holding AG (Inhaberaktie);Medical;‚Ç¨;CH0012032113
-RY4C.F;Ryanair;;‚Ç¨;IE00BYTBXV33
-SAP.F;SAP SE;;‚Ç¨;DE0007164600
+HLAG.F;Hapag-Lloyd;;Ä;
+HEI.F;HeidelbergCement AG;;Ä;DE0006047004
+HNK1.F;Heineken;;Ä;NL0000009165
+H9I.F;ICA Gruppen AB;;Ä;SE0000652216
+IUI1.F;Intuitive Surgical Inc;;Ä;US46120E6023
+L0CK.F;iShares Digital Security UCITS ETF USD Acc;ETF;Ä;IE00BG0J4C88
+2B78.F;iShares Healthcare Innovation UCITS ETF USD (Acc);ETF;Ä;IE00BYZK4776
+URTH;iShares MSCI World ETF;ETF;Ä;IE00B4L5Y983
+IQQW.F;iShares MSCI World UCITS ETF USD (Dist);ETF;Ä;IE00B0M62Q58
+013A.F;JD.com Inc (spons. ADRs);;Ä;US47215P1066
+JNJ.F;Johnson & Johnson;;Ä;US4781601046
+KU2.F;KUKA AG;;Ä;DE0006204407
+LGLG.F;LGE;;Ä;
+M4i.F;MasterCard Inc.;;Ä;US57636Q1040
+MSF.F;Microsoft Corp.;;Ä;US5949181045
+98M.F;MSC Industrial Direct Co. Inc.;;Ä;
+NESM.F;Nestl√© SA (Nestle);;Ä;CH0038863350
+FP3.F;NextEra Energy Inc;;Ä;US65339F1012
+NTH.F;Northrop Grumman Corp.;;Ä;US6668071029
+NOTA.F;Novartis AG;;Ä;CH0012005267
+NOVC.F;Novo Nordisk;;Ä;DK0060534915
+NVD.F;NVIDIA Corp.;;Ä;US67066G1040
+PER.F;Pernod Ricard S.A.;;Ä;FR0000120693
+PFE.F;Pfizer Inc.;Medical;Ä;US7170811035
+PRG.F;Procter & Gamble Co.;;Ä;US7427181091
+RHO6.F;Roche Holding AG (Inhaberaktie);Medical;Ä;CH0012032113
+RY4C.F;Ryanair;;Ä;IE00BYTBXV33
+SAP.F;SAP SE;;Ä;DE0007164600
 SI=F;Silber;commodities;$;
-YSN.F;secunet Security Networks AG;;‚Ç¨;DE0007276503
-4S0.F;ServiceNow Inc;;‚Ç¨;US81762P1021
-R6C.F;Shell (Royal Dutch Shell) (A);;‚Ç¨;GB00B03MLX29
-AWM.F;Skyworks Solutions Inc.;;‚Ç¨;US83088M1027
-NNND.F;Tencent Holdings Ltd;;‚Ç¨;KYG875721634
-TL0.F;Tesla;;‚Ç¨;US88160R1014
-TF7A.F;Tyson Foods Inc.;;‚Ç¨;US9024941034
-UNVB.F;Unilever plc;;‚Ç¨;GB00B10RZP78
-3V64.F;Visa Inc.;;‚Ç¨;US92826C8394
-WDP.F;Walt Disney;;‚Ç¨;US2546871060
-1WF.F;Wayfair Inc (A);;‚Ç¨;US94419L1017
-WDI.F;Wirecard;;‚Ç¨;
+YSN.F;secunet Security Networks AG;;Ä;DE0007276503
+4S0.F;ServiceNow Inc;;Ä;US81762P1021
+SKNB.F;Skanska;;Ä;
+R6C.F;Shell (Royal Dutch Shell) (A);;Ä;GB00B03MLX29
+AWM.F;Skyworks Solutions Inc.;;Ä;US83088M1027
+T5W.F;Takeaway.com;;Ä;
+NNND.F;Tencent Holdings Ltd;;Ä;KYG875721634
+TL0.F;Tesla;;Ä;US88160R1014
+TF7A.F;Tyson Foods Inc.;;Ä;US9024941034
+UNVB.F;Unilever plc;;Ä;GB00B10RZP78
+3V64.F;Visa Inc.;;Ä;US92826C8394
+WDP.F;Walt Disney;;Ä;US2546871060
+1WF.F;Wayfair Inc (A);;Ä;US94419L1017
+WDI.F;Wirecard;;Ä;
