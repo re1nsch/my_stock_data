@@ -9,12 +9,12 @@ stocklist_full <- read_csv2("./data/stock_symbols.csv")
 stocklist_symbole <- stocklist_full$Symbole
 stocklist_name <- stocklist_full$Name
 stocklist_currency <- stocklist_full$Currency
-stocklist_category <- stocklist_full$Category
+stocklist_sector <- stocklist_full$Sector
 
 df_stocklist <- data.frame(0,0,0,0,0,0,0,0,0,0,0,0)
 names(df_stocklist) <- c("Symbol",
                          "Name",
-                         "Category",
+                         "Sector",
                          "Current",
                          "Maxtotal",
                          "Min2008",
@@ -29,7 +29,7 @@ df_stocklist <- rbind(df_stocklist, NULL)
 for (idx in seq(length(stocklist_symbole))) {
   stocksymbole_index <- stocklist_symbole[idx]
   stockname_index <- stocklist_name[idx]
-  stockcategory_index <- stocklist_category[idx]
+  stocksector_index <- stocklist_sector[idx]
   
   raw_stockdata <- NULL
   suppressWarnings(
@@ -88,7 +88,7 @@ for (idx in seq(length(stocklist_symbole))) {
 
   df_tmp <- data.frame(stocksymbole_index,
                        stockname_index,
-                       stockcategory_index,
+                       stocksector_index,
                        round(current,1),
                        round(maxtotal,1),
                        round(min2008,1),
@@ -100,7 +100,7 @@ for (idx in seq(length(stocklist_symbole))) {
                        round(maxcur2020,1))
   names(df_tmp) <- c("Symbol",
                      "Name",
-                     "Category",
+                     "Sector",
                      "Current",
                      "Maxtotal",
                      "Min2008",
@@ -123,7 +123,7 @@ for (idx in seq(length(stocklist_symbole))) {
 #       idx,
 #       stocksymbole_index,
 #       stockname_index,
-#       stockcategory_index,
+#       stocksector_index,
 #       stocklist_name,
 #       stocklist_symbole,
 #       stocklist_currency,
@@ -139,7 +139,7 @@ for (idx in seq(length(stocklist_symbole))) {
 df_stocklist <- df_stocklist[-c(nrow(df_stocklist)),]
 df_stocklist$Name <- as.character(df_stocklist$Name)
 df_stocklist$Symbol <- as.character(df_stocklist$Symbol)
-df_stocklist$Category <- as.character(df_stocklist$Category)
+df_stocklist$Sector <- as.character(df_stocklist$Sector)
 df_stocklist <- df_stocklist[order(df_stocklist$Name),]
 
 #percent(df_stocklist$DropCorona/100)
