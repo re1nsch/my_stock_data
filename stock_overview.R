@@ -4,7 +4,6 @@ library(haven)
 library(scales)
 library(ggplot2)
 library(dplyr)
-library(plotly)
 
 stocklist_full <- read_csv2("./data/stock_symbols.csv")
 
