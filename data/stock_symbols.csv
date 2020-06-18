@@ -17,6 +17,7 @@ SOBA.F;AT&T Inc. (AT & T Inc.);US;Communication Services;Telecom Services;€;US
 ABR.F;Barrick Gold Corp.;CAN;Basic Materials;Gold;€;CA0679011084;https://de.finance.yahoo.com/quote/ABR.F/profile?p=ABR.F
 BYW.F;BayWa AG;GER;Industrials;Conglomerates;€;DE0005194062;https://de.finance.yahoo.com/quote/BYW.F/profile?p=BYW.F
 BEI.F;Beiersdorf AG;GER;Consumer Defensive;Household & Personal Products;€;DE0005200000;https://de.finance.yahoo.com/quote/BEI.F/profile?p=BEI.F
+BIL.F;BHP Billiton;AUS;Basic Materials;Other Industrial Metals & Mining;€;AU000000BHP4;https://de.finance.yahoo.com/quote/BIL.F/profile?p=BIL.F
 BTC-EUR;Bitcoin;-;Coin;-;€;-;https://de.finance.yahoo.com/quote/BTC-EUR/profile?p=BTC-EUR
 PCE1.F;Booking Holdings Inc Registered Shs;US;Consumer Cyclical;Travel Services;€;US09857L1089;https://de.finance.yahoo.com/quote/PCE1.F/profile?p=PCE1.F
 BRM.F;Bristol-Myers Squibb Co.;US;Healthcare;Drug Manufacturers—General;€;US1101221083;https://de.finance.yahoo.com/quote/BRM.F/profile?p=BRM.F
@@ -34,8 +35,10 @@ ESWB.F;Essity AB Registered Shs -B-;SWE;Consumer Defensive;Household & Personal 
 FUC.F;FANUC CORPORATION;JP;Industrials;Specialty Industrial Machinery;€;JP3802400006;https://de.finance.yahoo.com/quote/FUC.F/profile?p=FUC.F
 FPMB.F;Freeport-McMoRan Inc;US;Basic Materials;Copper;€;US35671D8570;https://de.finance.yahoo.com/quote/FPMB.F/profile?p=FPMB.F
 NLM.F;FRoSTA AG;GER;Consumer Defensive;Packaged Foods;€;DE0006069008;https://de.finance.yahoo.com/quote/NLM.F/profile?p=NLM.F
+39EA.F;GANFENG LITHIUM/Shs H Vtg 1.00;CHN;Basic Materials;Chemicals;€;CNE1000031W9;https://de.finance.yahoo.com/quote/39EA.F/profile?p=39EA.F
 WWG.F;GELSENWASSER AG;GER;Utilities;Utilities—Diversified;€;DE0007760001;https://de.finance.yahoo.com/quote/WWG.F/profile?p=WWG.F
 8GM.F;Genal Motors;US;Consumer Cyclical;Auto Manufacturers;€;US37045V1008;https://de.finance.yahoo.com/quote/8GM.F/profile?p=8GM.F
+8GC.F;Glencore;SUI;Basic Materials;Other Industrial Metals & Mining;€;JE00B4T3BW64;https://de.finance.yahoo.com/quote/8GC.F/profile?p=8GC.F
 GC=F;Gold;-;Raw Materials;-;$;-;https://de.finance.yahoo.com/quote/GC=F/profile?p=GC=F
 HLAG.F;Hapag-Lloyd;GER;Industrials;Marine Shipping;€;DE000HLAG475;https://de.finance.yahoo.com/quote/HLAG.F/profile?p=HLAG.F
 HEI.F;HeidelbergCement AG;GER;Basic Materials;Building Materials;€;DE0006047004;https://de.finance.yahoo.com/quote/HEI.F/profile?p=HEI.F
@@ -55,6 +58,7 @@ MSF.F;Microsoft Corp.;US;Technology;Software—Infrastructure;€;US5949181045;h
 98M.F;MSC Industrial Direct Co. Inc.;US;Industrials;Industrial Distribution;€;US5535301064;https://de.finance.yahoo.com/quote/98M.F/profile?p=98M.F
 NESM.F;Nestle SA (Nestle);SUI;Consumer Defensive;Packaged Foods;€;CH0038863350;https://de.finance.yahoo.com/quote/NESM.F/profile?p=NESM.F
 FP3.F;NextEra Energy Inc;US;Utilities;Utilities—Regulated Electric;€;US65339F1012;https://de.finance.yahoo.com/quote/FP3.F/profile?p=FP3.F
+NNIC.F;Nornickel;RUS;Basic Materials;Other Industrial Metals & Mining;€;RU0007288411;https://de.finance.yahoo.com/quote/NNIC.F/profile?p=NNIC.F
 NTH.F;Northrop Grumman Corp.;US;Industrials;Aerospace & Defense;€;US6668071029;https://de.finance.yahoo.com/quote/NTH.F/profile?p=NTH.F
 NOTA.F;Novartis AG;SUI;Healthcare;Drug Manufacturers—General;€;CH0012005267;https://de.finance.yahoo.com/quote/NOTA.F/profile?p=NOTA.F
 NOVC.F;Novo Nordisk;DEN;Healthcare;Biotechnology;€;DK0060534915;https://de.finance.yahoo.com/quote/NOVC.F/profile?p=NOVC.F
@@ -76,6 +80,7 @@ NNND.F;Tencent Holdings Ltd;CHN ;Communication Services;Internet Content & Infor
 TL0.F;Tesla;US;Consumer Cyclical;Auto Manufacturers;€;US88160R1014;https://de.finance.yahoo.com/quote/TL0.F/profile?p=TL0.F
 TF7A.F;Tyson Foods Inc.;US;Consumer Defensive;Farm Products;€;US9024941034;https://de.finance.yahoo.com/quote/TF7A.F/profile?p=TF7A.F
 UNVB.F;Unilever plc;NTH;Consumer Defensive;Household & Personal Products;€;GB00B10RZP78;https://de.finance.yahoo.com/quote/UNVB.F/profile?p=UNVB.F
+CVLC.F;Vale;BRZ;Basic Materials;Other Industrial Metals & Mining;€;BRVALEACNOR0;https://de.finance.yahoo.com/quote/CVLC.F/profile?p=CVLC.F
 3V64.F;Visa Inc.;US;Financial Services;Credit Services;€;US92826C8394;https://de.finance.yahoo.com/quote/3V64.F/profile?p=3V64.F
 WDP.F;Walt Disney;US;Communication Services;Entertainment;€;US2546871060;https://de.finance.yahoo.com/quote/WDP.F/profile?p=WDP.F
 1WF.F;Wayfair Inc (A);US;Consumer Cyclical;Internet Retail;€;US94419L1017;https://de.finance.yahoo.com/quote/1WF.F/profile?p=1WF.F
