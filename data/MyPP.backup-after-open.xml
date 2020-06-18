@@ -15,6 +15,7 @@
       <name>ABB (Asea Brown Boveri)</name>
       <currencyCode>EUR</currencyCode>
       <tickerSymbol>ABJA.F</tickerSymbol>
+      <feed>YAHOO</feed>
       <prices/>
       <isRetired>false</isRetired>
     </security>
