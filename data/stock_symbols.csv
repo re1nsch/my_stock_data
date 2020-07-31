@@ -1,4 +1,4 @@
-﻿Symbole;Name;Country;Sector;Branch;Currency;ISIN;Link
+Symbole;Name;Country;Sector;Branch;Currency;ISIN;Link
 MMM.F;3M Co.;US;Industrials;Specialty Industrial Machinery;€;US88579Y1010;https://de.finance.yahoo.com/quote/MMM.F/profile?p=MMM.F
 ABJA.F;ABB (Asea Brown Boveri);SUI;Industrials;Electrical Equipment & Parts;€;CH0012221716;https://de.finance.yahoo.com/quote/ABJA.F/profile?p=ABJA.F
 AIR.F;Airbus SE (ex EADS);NL;Industrials;Aerospace & Defense;€;NL0000235190;https://de.finance.yahoo.com/quote/AIR.F/profile?p=AIR.F
@@ -85,3 +85,4 @@ CVLC.F;Vale;BRZ;Basic Materials;Other Industrial Metals & Mining;€;BRVALEACNOR
 WDP.F;Walt Disney;US;Communication Services;Entertainment;€;US2546871060;https://de.finance.yahoo.com/quote/WDP.F/profile?p=WDP.F
 1WF.F;Wayfair Inc (A);US;Consumer Cyclical;Internet Retail;€;US94419L1017;https://de.finance.yahoo.com/quote/1WF.F/profile?p=1WF.F
 WDI.F;Wirecard;GER;Technology;Software—Application;€;DE0007472060;https://de.finance.yahoo.com/quote/WDI.F/profile?p=WDI.F
+VOW3.F;Volkswagen VZ;GER;Consumer Cyclical;Auto Manufacturers;€;DE0007664039;https://de.finance.yahoo.com/quote/VOW3.F/profile?p=VOW3.F
