@@ -1,0 +1,711 @@
+1.1 Getting Started
+	install.packages("dslabs")
+	library(dslabs)
+	install.packages(c("tidyverse", "dslabs")
+	installed.packages()
+
+1.2 R Basics
+	<-
+	help(function_name)
+
+1.3 Data Types
+	class() 			- # determining the class
+	str() 				- # finding out more about the structure of the object
+	head() 				- # showing the first 6 lines of the dataset
+	murders$population 	- # using the accessor operator to obtain the population column
+	names() 			- # displaying the variable names in the dataset
+	length() 			- # determining how many entries are in a vector
+	levels() 			- # obtaining the levels of a factor
+
+2.1 Vectors
+	c()
+	as.character()
+	as.numeric()
+
+2.2 Sorting
+	sort()		- sorts a vector in increasing order.
+	order()		- produces the indices needed to obtain the sorted vector
+	rank()		- gives us the ranks of the items in the original vector.
+	max()		- returns the largest value, while which.max() returns the index of the largest value
+
+2.3 Vector Arithmetic
+	-
+
+3.1 Indexing
+	&
+	|
+	<
+	>
+	<=
+	>=
+	==
+	!=
+	which()
+	match()
+	%in% --> e.g. "p <- murders %>% ggplot()"
+
+3.2 Basic Data Wrangling
+	library(dplyr) --> necessary for pipes
+	mutate()
+	filter()
+		tab <- NHANES %>% filter(AgeDecade == " 20-29" & Gender == "female")
+	select()
+		select() keeps only the variables you mention; rename() keeps all variables.
+	%>%
+	nrow()
+
+	pollster_results <- polls %>% 
+                    mutate(X_hat = polls$rawpoll_clinton/100, se_hat = sqrt(X_hat*(1-X_hat)/samplesize), lower = X_hat - qnorm(0.975)*se_hat, upper = X_hat + qnorm(0.975)*se_hat) %>% 
+                    select(pollster, enddate, X_hat, se_hat, lower, upper)
+
+3.3 Basic Plots
+	plot()
+	hist()
+	boxplot()
+
+4.2 Conditionals
+	if(...){
+  		...
+	} else{
+  		...
+	}
+	
+	sum(is.na(...)
+	any(z) --> If any element of vector is TRUE --> TRUE
+	all(z) --> If allelemente of vector are TRUE --> TRUE
+
+4.3 Basic Functions
+	mean() --> "Average"
+
+	avg <- function(x, y = TRUE){
+  		s <- sum(x)
+  		n <- length(x)
+  		s/n  -->  (last value in the function is returned)
+	}
+	--> avg(1:100)
+	--> Default value of y can be changed by function call
+
+ 	ifelse(TRUE/FALSE, 1, 2)) --> TRUE-1, FALSE-2
+
+4.4 For Loops
+	for(i in 1:5){
+  		print(i)
+	}
+
+	Alternatives:
+		apply()
+		sapply()
+		tapply()
+		mapply()
+
+Other functions:
+	split()
+	cut()
+	quantile()
+	reduce()
+	identical()
+	unique()
+
+	nchar() --> length of a character vector
+
+
+
+Data visualization
+
+1.1 Variable types
+	names  --> returns variable names of a dataset
+	head --> returns the first 6 rows of a dataset
+	unique --> returns each value of a dataset once
+	table --> returns a table with count of each element in a dataset
+	prop.table(table(heights$sex)) --> output Proportionen (%) in a table for count of male and female
+
+1.2 Distribution
+	mean() --> Average
+	sd() --> Stadard Deviation
+	scale() --> apply standard units
+	pnorm(a, avg, s) gives the value of the cumulative distribution function  F(a) for the normal distribution defined by average avg and standard deviation s --> Which percantage is less than value for normal distribution
+
+1.3 Quantiles, Percentiles, and Boxplots
+	quantile(data,q) --> Quantiles are cutoff points that divide a dataset into intervals with set probabilities. The  q th quantile is the value at which  q % of the observations are equal to or less than that value.
+	Percentiles are the quantiles that divide a dataset into 100 intervals each with 1% probability. You can determine all percentiles of a dataset data like this:
+		p <- seq(0.01, 0.99, 0.01)
+		quantile(data, p)
+	The qnorm() function gives the theoretical value of a quantile with probability p of observing a value equal to or less than that quantile value given a normal distribution with mean mu and standard deviation sigma:
+		qnorm(p, mu, sigma)
+	Boxplot
+		In a boxplot, the box is defined by the 25th and 75th percentiles and the median is a horizontal line through the box. The whiskers show the range excluding outliers, and outliers are plotted separately as individual points.
+
+2 ggplot2
+	part of - library(tidyverse)
+	
+	Definitions
+		ggplot(data = x)
+		ggplot(x)
+		x %>% ggplot()
+
+	Layers
+		Adding By Symbol "+"
+		DATA %>% ggplot() + LAYER_1 + LAYER_2 + ... + LAYER_N
+		The geometry layer defines the plot type and takes the format geom_X where X is the plot type.
+		Aesthetic mappings describe how properties of the data connect with features of the graph (axis position, color, size, etc.) Define aesthetic mappings with the aes() function.
+		aes() uses variable names from the object component (for example, total rather than murders$total).
+		geom_point() creates a scatterplot and requires x and y aesthetic mappings. 
+		geom_text() and geom_label() add text to a scatterplot and require x, y, and label aesthetic mappings.
+		To determine which aesthetic mappings are required for a geometry, read the help file for that geometry.
+		You can add layers with different aesthetic mappings to the same graph.
+		
+		Global aesthetic mappings apply to all geometries and can be defined when you initially call ggplot(). All the geometries added as layers will default to this mapping. Local aesthetic mappings add additional information or override the default mappings.
+
+		scale_x_continuous(trans = 'log2') --> Log Base2
+		scale_y_continuous
+		scale_x_log10
+		scale_y_log10
+		scale_y_reverse
+		scale_x_reverse
+		xlab
+		ylab
+		ggtitle
+		# make all points blue	--> p + geom_point(size = 3, color = "blue")
+		# color points by region --> p + geom_point(aes(col = region), size = 3)
+		geom_abline --> Add a LINE
+		scale_color_discrete --> Change legend title
+		geom_line --> connect points by line
+
+	Add-On Packages
+		library(ggthemes)
+			p + theme_economist()    # style of the Economist magazine
+			p + theme_fivethirtyeight()    # style of the FiveThirtyEight website
+
+		library(ggrepel) --> includes a geometry that repels text labels, ensuring they do not overlap with each other: geom_text_repel().
+
+	Other Examples
+		Layer 
+			--> geom_histogram
+			--> geom_density
+			--> geom_qq
+		library(gridExtra)
+			--> Grids of plots with the gridExtra package
+			--> grid.arrange(p1, p2, p3, ncol = 3)
+
+	Example
+		 Create basic plot
+			p<- murders %>% ggplot(aes(x = population, y = total)) + geom_point()
+		Add Labels
+			p<- murders %>% ggplot(aes(population, total, label = abb)) + geom_label()
+		Add Label Color
+			p<- murders %>% ggplot(aes(population, total, label = abb)) + geom_label(color = "blue")
+		Add Color Per Region
+			p<- murders %>% ggplot(aes(population, total, label = abb, color = region)) + geom_label()
+		Add Layers for Log10 axes
+			p + scale_x_log10() + scale_y_log10()
+		Add Layer for title
+			p + scale_x_log10() + scale_y_log10() + ggtitle("Gun murder data")
+		Create a Basic ggPlot object
+			p <- heights %>% ggplot(aes(x = height))
+		Add a Layer for Histogramm
+			p + geom_histogram()
+		Add a Layer for Binwidth
+			p + geom_histogram(binwidth = 1)
+		Create a smooth density plot in one line
+			heights %>% ggplot(aes(height)) + geom_density()
+		Create 2 plots in one plot
+			heights %>% ggplot(aes(height, group = sex)) + geom_density()
+		Defining 2 plots by color item
+			heights %>% ggplot(aes(height, color=sex)) + geom_density()
+		Define Transparency for filling
+			heights %>% ggplot(aes(height, fill = sex)) + geom_density(alpha = 0.2)
+
+Summarizing with dplyr
+	library(tidyverse)
+	summarize() --> facilitate summarizing data
+	group_by() --> facilitate summarizing data
+	arrange() --> examine data after sorting
+	
+	summarize
+		compute average and standard deviation for males
+			heights %>% filter(sex == "Male") 
+			        %>% summarize(average = mean(height), standard_deviation = sd(height))
+			--> Result is dataframe
+
+			heights %>% filter(sex == "Male")
+				%>% summarize(median = median(height), minimum = min(height), maximum = max(height))
+
+		--> Result of summarize is dataset with requested information
+
+	Dot Placeholder
+		Access Data in Dataframe
+			us_murder_rate %>% .$rate --> Returns numeric value, not the dataset
+
+	group_by
+		heights %>% group_by(sex) --> returns a group dataframe
+		group_by(AgeDecade, Gender)	--> for more than one group possible
+
+	Arrange
+		Sorting data tables
+			sort by population smallest to largest
+				--> murders %>% arrange(population)
+
+			sort by murder_rate lowest to highest
+				--> murders %>% arrange(desc(murder_rate))
+
+			sort first by region alphabetically, then by murder rate within each region (nested ordering)
+				--> murders %>% arrange(region, murder_rate)
+
+			show the top 10 states with highest murder rate, not ordered by rate
+				--> murders %>% top_n(10, murder_rate)
+
+			show the top 10 states with highest murder rate, ordered by rate
+				--> murders %>% arrange(desc(murder_rate)) %>% top_n(10)
+
+		na.rm
+		mean(na_example, na.rm = TRUE)
+			--> Average only calculated for values that are not NA
+		For filter use is.na(VARIABLE)
+
+	Example
+		NHANES %>%
+      			filter(Gender == "female") %>% 
+      			group_by(AgeDecade) %>%
+      			summarize(average = mean(BPSysAve, na.rm = TRUE), standard_deviation = sd(BPSysAve, na.rm = TRUE))
+
+		NHANES %>%
+      			filter(Gender == "male" & AgeDecade==" 40-49") %>%
+      			group_by(Race1) %>%
+      			summarize(average = mean(BPSysAve, na.rm = TRUE), 
+                		standard_deviation = sd(BPSysAve, na.rm=TRUE)) %>%
+      			arrange(average)
+
+Instruction to Gapminder
+	library(dslabs)
+	data(gapminder
+
+	Faceting
+		Faceting makes multiple side-by-side plots stratified by some variable. This is a way to ease comparisons
+		the facet_grid() function allows faceting by up to two variables, with rows faceted by one variable and columns faceted by the other variable. To facet by only one variable, use the dot operator as the other variable.
+		The facet_wrap() function facets by one variable and automatically wraps the series of plots so they have readable dimensions.
+		Faceting keeps the axes fixed across all plots, easing comparisons between plots.
+		--> Added as a Layer to ggplot
+
+		Example:
+			facet by continent and year
+				filter(gapminder, year %in% c(1962, 2012)) %>%
+    				ggplot(aes(fertility, life_expectancy, col = continent)) +
+    				geom_point() +
+    				facet_grid(continent ~ year)
+			facet by year only
+				filter(gapminder, year %in% c(1962, 2012)) %>%
+  	  			ggplot(aes(fertility, life_expectancy, col = continent)) +
+    				geom_point() +
+    				facet_grid(. ~ year)
+			facet by year, plots wrapped onto multiple rows
+				years <- c(1962, 1980, 1990, 2000, 2012)
+				continents <- c("Europe", "Asia")
+				gapminder %>%
+    				filter(year %in% years & continent %in% continents) %>%
+    				ggplot(aes(fertility, life_expectancy, col = continent)) +
+    				geom_point() +
+    				facet_wrap(~year)
+
+			  facet_grid(year~.) --> Align plots vertically
+			  facet_grid(.~year) --> Align plots horizontally
+
+	Axis Theme
+		Rotate axis labels by changing the theme through element_text(). You can change the angle and justification of the text labels.
+
+	Reorder
+		Consider ordering your factors by a meaningful value with the reorder() function, which changes the order of factor levels based on a related numeric vector. This is a way to ease comparisons.
+
+	Stacked Plot Example
+		daydollars <- gapminder %>%
+  			mutate(dollars_per_day=gdp/population/365) %>%
+  			filter((year==2010 | year==1970) & continent=="Africa" & !is.na(gdp))
+
+		daydollars %>%
+  			ggplot(aes(dollars_per_day,fill = region)) +
+  			geom_density(bw=0.5, alpha = 0.2,position = "stack") +
+  			scale_x_continuous(trans='log2') +
+  			facet_grid(.~year)
+
+Data Visualization Principles
+	Visual cues for encoding data include position, length, angle, area, brightness and color hue.
+	Position and length are the preferred way to display quantities, followed by angles, which are preferred over area. Brightness and color are even harder to quantify but can sometimes be useful.
+	Pie charts represent visual cues as both angles and area, while donut charts use only area. Humans are not good at visually quantifying angles and are even worse at quantifying area. Therefore pie and donut charts should be avoided - use a bar plot instead. If you must make a pie chart, include percentages as labels.
+	Bar plots represent visual cues as position and length. Humans are good at visually quantifying linear measures, making bar plots a strong alternative to pie or donut charts.
+
+	When using bar plots, always start at 0. It is deceptive not to start at 0 because bar plots imply length is proportional to the quantity displayed. Cutting off the y-axis can make differences look bigger than they actually are.
+	When using position rather than length, it is not necessary to include 0 (scatterplot, dot plot, boxplot).
+
+	Make sure your visualizations encode the correct quantities.
+	For example, if you are using a plot that relies on circle area, make sure the area (rather than the radius) is proportional to the quantity.
+
+	It is easiest to visually extract information from a plot when categories are ordered by a meaningful value. The exact value on which to order will depend on your data and the message you wish to convey with your plot.
+	The default ordering for categories is alphabetical if the categories are strings or by factor level if factors. However, we rarely want alphabetical order.
+
+	A dynamite plot - a bar graph of group averages with error bars denoting standard errors - provides almost no information about a distribution.
+	By showing the data, you provide viewers extra information about distributions.
+	Jitter is adding a small random shift to each point in order to minimize the number of overlapping points. To add jitter, use the  geom_jitter() geometry instead of geom_point(). (See example below.)
+		--> heights %>% ggplot(aes(sex, height)) + geom_jitter(width = 0.1, alpha = 0.2)
+	Alpha blending is making points somewhat transparent, helping visualize the density of overlapping points. Add an alpha argument to the geometry.
+
+	Ease comparisons by keeping axes the same when comparing data across multiple plots.
+	Align plots vertically to see horizontal changes. Align plots horizontally to see vertical changes.
+	Bar plots are useful for showing one number but not useful for showing distributions.
+
+	Use transformations when warranted to ease visual interpretation.
+	The log transformation is useful for data with multiplicative changes. The logistic transformation is useful for fold changes in odds. The square root transformation is useful for count data.
+	We learned how to apply transformations earlier in the course.
+
+	When two groups are to be compared, it is optimal to place them adjacent in the plot.
+	Use color to encode groups to be compared.
+	Consider using a color blind friendly palette like the one in this video.
+		color_blind_friendly_cols <- c("#999999", "#E69F00", "#56B4E9", "#009E73", "#F0E442", "#0072B2", "#D55E00", "#CC79A7")
+		p1 <- data.frame(x = 1:8, y = 1:8, col = as.character(1:8)) %>%
+    			ggplot(aes(x, y, color = col)) +
+    			geom_point(size = 5)
+		p1 + scale_color_manual(values = color_blind_friendly_cols)
+
+	Consider using a slope chart or Bland-Altman plot when comparing one variable at two different time points, especially for a small number of observations.
+	Slope charts use angle to encode change. Use geom_line() to create slope charts. It is useful when comparing a small number of observations.
+	The Bland-Altman plot (Tukey mean difference plot, MA plot) graphs the difference between conditions on the y-axis and the mean between conditions on the x-axis. It is more appropriate for large numbers of observations than slope charts.
+
+	Encode a categorical third variable on a scatterplot using color hue or shape. Use the shape argument to control shape.
+	Encode a continuous third variable on a using color intensity or size.
+		--> controlled by Shape variable
+
+	Vaccines save millions of lives, but misinformation has led some to question the safety of vaccines. The data support vaccines as safe and effective. We visualize data about measles incidence in order to demonstrate the impact of vaccination programs on disease rate.
+	The RColorBrewer package offers several color palettes. Sequential color palettes are best suited for data that span from high to low. Diverging color palettes are best suited for data that are centered and diverge towards high or low values.
+	The geom_tile() geometry creates a grid of colored tiles.
+	Position and length are stronger cues than color for numeric values, but color can be appropriate sometimes.
+
+	In general, pseudo-3D plots and gratuitous 3D plots only add confusion. Use regular 2D plots instead.
+
+	In tables, avoid using too many significant digits. Too many digits can distract from the meaning of your data.
+	Reduce the number of significant digits globally by setting an option. For example, options(digits = 3) will cause all future computations that session to have 3 significant digits.
+	Reduce the number of digits locally using round() or signif().
+
+
+
+Propability
+
+Introduction
+	Monte Carlo Simulations
+		Monte Carlo simulations model the probability of different outcomes by repeating a random process a large enough number of times that the results are similar to what would be observed if the process were repeated forever.
+		sample() - draws random outcomes from a set of options.
+		replicate() - repeats lines of code a set number of times
+
+		Example:
+			beads <- rep(c("red", "blue"), times = c(2,3))    # create an urn with 2 red, 3 blue
+		beads    # view beads object
+				sample(beads, 1)    # sample 1 bead at random
+	
+			B <- 10000    # number of times to draw 1 bead
+			events <- replicate(B, sample(beads, 1))    # draw 1 bead, B times
+			tab <- table(events)    # make a table of outcome counts
+			tab    # view count table
+			prop.table(tab)    # view table of outcome proportions
+
+		sample(beads,B,replace=TRUE) 	--> Same result as with replicate, because the bead is always put back in the urn
+						--> Without replace=TRUE B can be not bigger than number of beads in urn because they are not put back
+	Setting Seed
+		set.seed(1986) --> ensure that results are exactly the same every time you run them
+		set.seed(1, sample.kind="Rounding") --> will make R 3.6 generate a seed as in R 3.5
+
+	Mean function
+		mean() --> can be used to return the proportion of elements that are TRUE
+		mean(beads == "blue") --> 0.6
+
+	Independence
+		Independent events not effect each other --> e.g. coin toss
+		Non Independent events effect each others propability --> e.g. drawing a bead from an urn without replacement
+		--> Effects multiplication rule!!
+
+Combinations and Permutations
+	paste() - joins two strings and inserts a space in between.
+	expand.grid() - gives the combinations of 2 vectors or lists.
+	permutations(n,r) - from the gtools package lists the different ways that r items can be selected from a set of n options when order matters.
+	combinations(n,r) - from the gtools package lists the different ways that r items can be selected from a set of n options when order does not matter.
+
+	Example:
+		# joining strings with paste
+		number <- "Three"
+		suit <- "Hearts"
+		paste(number, suit)
+
+		# joining vectors element-wise with paste
+		paste(letters[1:5], as.character(1:5))
+
+		# generating combinations of 2 vectors with expand.grid
+		expand.grid(pants = c("blue", "black"), shirt = c("white", "grey", "plaid"))
+		
+		Code: Generating a deck of cards
+		suits <- c("Diamonds", "Clubs", "Hearts", "Spades")
+		numbers <- c("Ace", "Deuce", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Jack", "Queen", "King")
+		deck <- expand.grid(number = numbers, suit = suits)
+		deck <- paste(deck$number, deck$suit)
+
+		# probability of drawing a king
+		kings <- paste("King", suits)
+		mean(deck %in% kings)
+
+		permutations(3,2)    # order matters --> 2652 rows
+		combinations(3,2)    # order does not matter
+
+	The birthday problem
+		# checking for duplicated bdays in one 50 person group
+		n <- 50
+		bdays <- sample(1:365, n, replace = TRUE)    # generate n random birthdays
+		any(duplicated(bdays))    # check if any birthdays are duplicated
+
+		# Monte Carlo simulation with B=10000 replicates
+		B <- 10000
+		results <- replicate(B, {    # returns vector of B logical values
+    			bdays <- sample(1:365, n, replace = TRUE)
+    			any(duplicated(bdays))
+		})
+		mean(results)    # calculates proportion of groups with duplicated bdays
+
+	SAPPLY
+		The function sapply(x, f) allows any other function f to be applied element-wise to the vector x.
+
+		Example:
+			B <- 10^seq(1, 5, len = 100)    # defines vector of many B values
+			compute_prob <- function(B, n = 22){    # function to run Monte Carlo simulation with each B
+				same_day <- replicate(B, {
+    				bdays <- sample(1:365, n, replace = TRUE)
+    		  		  any(duplicated(bdays))
+  			  })
+ 			   mean(same_day)
+			}
+
+			prob <- sapply(B, compute_prob)    # apply compute_prob to many values of B
+			plot(log10(B), prob, type = "l")    # plot a line graph of estimates 
+
+	Addition rule
+		The addition rule states that the probability of event  A  or event  B  happening is the probability of event  A  plus the probability of event  B  minus the probability of both events  A  and  B  happening together.
+
+Continuous Probability
+	The cumulative distribution function (CDF) is a distribution function for continuous data  x  that reports the proportion of the data below  a  for all values of  a
+
+	Note that dnorm() gives the density function and pnorm() gives the distribution function, which is the integral of the density function.
+
+	rnorm(n, avg, s) generates n random numbers from the normal distribution with average avg and standard deviation s.
+	By generating random numbers from the normal distribution, we can simulate height data with similar properties to our dataset. Here we generate simulated height data using the normal distribution.
+
+	Example:
+		# generate simulated height data using normal distribution - both datasets should have n observations
+		n <- length(x)
+		avg <- mean(x)
+		s <- sd(x)
+		simulated_heights <- rnorm(n, avg, s)
+
+		# plot distribution of simulated_heights
+		data.frame(simulated_heights = simulated_heights) %>%
+  		  ggplot(aes(simulated_heights)) +
+  		  geom_histogram(color="black", binwidth = 2)
+
+	Example:
+		B <- 10000
+		tallest <- replicate(B, {
+  		  simulated_data <- rnorm(800, avg, s)    # generate 800 normally distributed random heights
+    		max(simulated_data)    # determine the tallest height
+		})
+		mean(tallest >= 7*12)    # proportion of times that tallest person exceeded 7 feet (84 inches)
+
+	Example:
+		# The variable `B` specifies the number of times we want the simulation to run.
+		B <- 1000
+
+		# Use the `set.seed` function to make sure your answer matches the expected result after random number generation.
+		set.seed(1)
+
+		# Create an object called `highestIQ` that contains the highest IQ score from each random distribution of 10,000 people.
+		highestIQ <-replicate(B, {
+    			simulated_data <- rnorm(10000, 100, 15)
+    			max(simulated_data)
+		})
+
+		# Make a histogram of the highest IQ scores.
+		hist(highestIQ)
+
+Sampling Models
+	n <- 1000    # number of roulette players
+	B <- 10000    # number of Monte Carlo experiments
+	S <- replicate(B, {
+    	X <- sample(c(-1,1), n, replace = TRUE, prob = c(9/19, 10/19))    # simulate 1000 spins
+    	sum(X)    # determine total profit
+	})
+
+	mean(S < 0)    # probability of the casino losing money
+
+	Expected value - µ --> average of a lot of draws
+
+	The Central Limit Theorem (CLT) says that the distribution of the sum of a random variable is approximated by a normal distribution.
+	The expected value of a random variable,  E[X]=μ , is the average of the values in the urn. This represents the expectation of one draw. 
+	The standard error of one draw of a random variable is the standard deviation of the values in the urn.
+	The expected value of the sum of draws is the number of draws times the expected value of the random variable. 
+	The standard error of the sum of independent draws of a random variable is the square root of the number of draws times the standard deviation of the urn. 
+
+Averages and Proportions
+	Random variable times a constant
+	The expected value of a random variable multiplied by a constant is that constant times its original expected value:
+		E[aX]=aμ 
+	The standard error of a random variable multiplied by a constant is that constant times its original standard error:
+		SE[aX]=aσ 
+	Average of multiple draws of a random variable
+	The expected value of the average of multiple draws from an urn is the expected value of the urn ( μ ).
+	The standard deviation of the average of multiple draws from an urn is the standard deviation of the urn divided by the square root of the number of draws ( σ/n−−√ ).
+	The sum of multiple draws of a random variable
+	The expected value of the sum of  n  draws of a random variable is  n  times its original expected value:
+		E[nX]=nμ 
+	The standard error of the sum of  n  draws of random variable is  n−−√  times its original standard error:
+		SE[nX]=√(nσ) 
+	The sum of multiple different random variables
+	The expected value of the sum of different random variables is the sum of the individual expected values for each random variable:
+		E[X1+X2+⋯+Xn]=μ1+μ2+⋯+μn 
+	The standard error of the sum of different random variables is the square root of the sum of squares of the individual standard errors:
+		SE[X1+X2+⋯+Xn]=√(σ21+σ22+⋯+σ2n)
+	Transformation of random variables
+	If  X  is a normally distributed random variable and  a  and  b  are non-random constants, then  aX+b  is also a normally distributed random variable.
+
+Law of Large Numbers
+	The law of large numbers states that as n increases, the standard error of the average of a random variable decreases. In other words, when  n  is large, the average of the draws converges to the average of the urn.
+	The law of large numbers is also known as the law of averages.
+	The law of averages only applies when n is very large and events are independent. It is often misused to make predictions about an event being "due" because it has happened less frequently than expected in a small sample size.
+
+How Large is Large in CLT?
+	The sample size required for the Central Limit Theorem and Law of Large Numbers to apply differs based on the probability of success.
+	If the probability of success is high, then relatively few observations are needed.
+	As the probability of success decreases, more observations are needed.
+	If the probability of success is extremely low, such as winning a lottery, then the Central Limit Theorem may not apply even with extremely large sample sizes. The normal distribution is not a good approximation in these cases, and other distributions such as the Poisson distribution (not discussed in these courses) may be more appropriate.
+
+# Use the Central Limit Theorem to calculate the probability that the insurance
+	#  company loses money on this set of 1,000 policies.
+	pnorm(0, 1000*(-150000*p + 1150*(1-p)), sqrt(1000)*(abs(-150000-1150)*sqrt(p*(1-p))))
+
+x <- -l*( n*p - z*sqrt(n*p*(1-p)))/ ( n*(1-p) + z*sqrt(n*p*(1-p)))
+l*p + x*(1-p)
+
+Bayesian Statistics
+	In the urn model, it does not make sense to talk about the probability of  p  being greater than a certain value because  p  is a fixed value.
+	With Bayesian statistics, we assume that  p  is in fact random, which allows us to calculate probabilities related to  p .
+	Hierarchical models describe variability at different levels and incorporate all these levels into a model for estimating  p .
+
+	prev <- 0.00025    # disease prevalence
+	N <- 100000    # number of tests
+	outcome <- sample(c("Disease", "Healthy"), N, replace = TRUE, prob = c(prev, 1-prev))
+
+	N_D <- sum(outcome == "Disease")    # number with disease
+	N_H <- sum(outcome == "Healthy")    # number healthy
+
+	# for each person, randomly determine if test is + or -
+	accuracy <- 0.99
+	test <- vector("character", N)
+	test[outcome == "Disease"] <- sample(c("+", "-"), N_D, replace=TRUE, prob = c(accuracy, 1-accuracy))
+	test[outcome == "Healthy"] <- sample(c("-", "+"), N_H, replace=TRUE, prob = c(accuracy, 1-accuracy))
+
+	table(outcome, test)
+
+Interference and Modelling
+Definitions:
+	In a sampling model, the collection of elements in the urn is called the population.
+	- A parameter is a number that summarizes data for an entire population.
+	- A sample is observed data from a subset of the population.
+	- An estimate is a summary of the observed data about a parameter that we believe is informative. It is a data-driven guess of the population parameter.
+	- We want to predict the proportion of the blue beads in the urn, the parameter  p . The proportion of red beads in the urn is  1−p  and the spread is  2p−1 .
+	- The sample proportion is a random variable. Sampling gives random results drawn from the population distribution.
+
+Taking random draw from an urn
+	- library(tidyverse)
+	- library(dslabs)
+	- take_poll(25) # draw 25 beads
+
+Sample Average
+	Sum(X)/Count(X)
+	X = (n1+n2+n3+...)/N
+	N*X = Sum of independent draws
+
+Polling vs Forecasting
+	A poll taken in advance of an election estimates  p  for that moment, not for election day.
+	In order to predict election results, forecasters try to use early estimates of  p  to predict  p  on election day. We discuss some approaches in later sections.
+
+Properties of Our Estimate
+	The expected value of X is the parameter of interest  p . This follows from the fact that X is the sum of independent draws of a random variable times a constant 1/N .
+	E(X)=p
+	
+	As the number of draws N increases, the standard error of our estimate X decreases. The standard error of the average of X over N draws is:
+	SE(X)=sqrt(p(1−p)/N)
+	
+	--> In theory, we can get more accurate estimates of p by increasing N. In practice, there are limits on the size of N due to costs, as well as other factors we discuss later.
+	
+	For a sum of draws the following equations apply:
+		E(S)=N*p
+		SE(S)=sqrt(N*p(1−p)/N)
+		
+	Standard error of the spread
+		2*sqrt(p(1−p)/N)
+
+Margin of Error
+	The margin of error is defined as 2 times the standard error of the estimate X.
+	There is about a 95% chance that X will be within two standard errors of the actual parameter  p.
+
+A Monte Carlo Simulation for the CLT
+	Code: Monte Carlo simulation using a set value of p
+		p <- 0.45    # unknown p to estimate
+		N <- 1000
+
+		# simulate one poll of size N and determine x_hat
+		x <- sample(c(0,1), size = N, replace = TRUE, prob = c(1-p, p))
+		x_hat <- mean(x)
+
+		# simulate B polls of size N and determine average x_hat
+		B <- 10000    # number of replicates
+		N <- 1000    # sample size per replicate
+		x_hat <- replicate(B, {
+			x <- sample(c(0,1), size = N, replace = TRUE, prob = c(1-p, p))
+			mean(x)
+		})
+	Code: Histogram and QQ-plot of Monte Carlo results
+		library(tidyverse)
+		library(gridExtra)
+		p1 <- data.frame(x_hat = x_hat) %>%
+			ggplot(aes(x_hat)) +
+			geom_histogram(binwidth = 0.005, color = "black")
+		p2 <- data.frame(x_hat = x_hat) %>%
+			ggplot(aes(sample = x_hat)) +
+			stat_qq(dparams = list(mean = mean(x_hat), sd = sd(x_hat))) +
+			geom_abline() +
+			ylab("X_hat") +
+			xlab("Theoretical normal")
+		grid.arrange(p1, p2, nrow=1)
+
+The Spread
+	The spread between two outcomes with probabilities p and 1−p is 2p−1.
+	The expected value of the spread is 2X−1 .
+	The standard error of the spread is 2SE(X) .
+	The margin of error of the spread is 2 times the margin of error of X.
+
+Bias
+	An extremely large poll would theoretically be able to predict election results almost perfectly.
+	These sample sizes are not practical. In addition to cost concerns, polling doesn't reach everyone in the population (eventual voters) with equal probability, and it also may include data from outside our population (people who will not end up voting).
+	These systematic errors in polling are called bias. We will learn more about bias in the future.
+
+Confidence Intervals
+	We can use statistical theory to compute the probability that a given interval contains the true parameter p.
+	95% confidence intervals are intervals constructed to have a 95% chance of including p. The margin of error is approximately a 95% confidence interval.
+	The start and end of these confidence intervals are random variables.
+	To calculate any size confidence interval, we need to calculate the value z  for which Pr(−z≤Z≤z) equals the desired confidence. For example, a 99% confidence interval requires calculating z for Pr(−z≤Z≤z)=0.99.
+	For a confidence interval of size  q , we solve for  z=1−(1−q)/2.
+	To determine a 95% confidence interval, use z <- qnorm(0.975). This value is slightly smaller than 2 times the standard error.
+
+p-Values
+	The null hypothesis is the hypothesis that there is no effect. In this case, the null hypothesis is that the spread is 0, or  p=0.5 .
+	The p-value is the probability of detecting an effect of a certain size or larger when the null hypothesis is true.
+	We can convert the probability of seeing an observed value under the null hypothesis into a standard normal random variable. We compute the value of z that corresponds to the observed result, and then use that z to compute the p-value.
+	If a 95% confidence interval does not include our observed value, then the p-value must be smaller than 0.05.
+	It is preferable to report confidence intervals instead of p-values, as confidence intervals give information about the size of the estimate and p-values do not.
+
+	Remember the formula for standard error:
+	SE(X) = sqrt(X(1−X)/N)
+ 
+	The lower bound of the 95% confidence interval is equal to X−qnorm(0.975)*SE(X).
+	The upper bound of the 95% confidence interval is equal to X+qnorm(0.975)*SE(X).

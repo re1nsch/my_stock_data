@@ -1,0 +1,167 @@
+https://rafalab.github.io/dsbook/
+
+- R
+- R Studio
+- Git (Git Bash in Windows)
+
+- Save data in projects
+
+Configure git in R-Studio:
+- git config --global user.name "Your Name"
+- git config --global user.email "your@email.com"
+
+Git actions:
+- pull: pull changes from remote repo (if you are in collaboration with others)
+- add: stage files for commit; click on stage box under git pane
+- commit: commit to the local repo; click on "commit" button under git pane; add a commit message
+- push: push to the remote repo on Github
+
+UNIX commands:
+	Absolute path vs. relative path
+		A full path specifies the location of a file from the root directory. It is independent of your present directory, and must begin with either a “/” or a “~”. In this example, the full path to our “project-1” file is: 
+			/home/projects/project-1
+		A relative path is the path relative to your present working directory. If our present working directory is the “projects” folder, then the relative path to our “project-1” file is simply: 
+			project-1
+	
+	Path shortcuts
+		One period “.” is your current working directory
+		Two periods “..” is the parent directory (up one from your present working directory) 
+		A tilde “~” is your home directory
+
+	More path examples
+		1. Your current working directory is ~/projects and you want to move to the figs directory in the project-1 folder
+			Solution 2: cd ~/projects/project-1/figs (absolute)
+			Solution 2:  cd project-1/figs (relative)
+		2. Your current working directory is ~/projects and you want to move to the reports folder in the docs directory
+			Solution 1: cd ~/dos/reports (absolute)
+			Solution 2: cd ../docs/reports (relative)
+		3. Your current working directory is ~/projects/project-1/figs and you want to move to the project-2 folder in the projects directory.
+			Solution 1: cd ~/projects/project-2 (absolute)
+			Solution 2: cd ../../project-2 (relative)
+
+https://rafalab.github.io/dsbook/unix.html
+https://www.codecademy.com/learn/learn-the-command-line
+https://www.quora.com/Which-are-the-best-Unix-Linux-reference-books
+
+- pwd - workong directory
+- "~" means the home directory
+
+- ls #list dir content
+- mkdir folder_name #create directory called "folder_name"
+- rmdir folder_name  #remove an empty directory as long as it is empty
+- rm -r folder_name  #remove dir that is not empty, "r" stands for recursive
+- cd: change dir
+- ../ # two dots represents parent dir
+- . # single dot represents current workingdir 
+- cd ~/projects # concatenate with forward slashes
+- cd ../.. # change to two parent layer beyond
+- cd -  # whatever dir you were before
+- cd  # return to the home dir
+- Autocomplete with TAB
+
+The mv command moves files.
+	- [warning] mv will not ask you to confirm the move, and it could potentially overwrite a file.
+	- mv path-to-file path-to-destination-directory
+	--> Can also be used to rename a file
+	- also cp can be used, to keep both
+The rm command removes files.
+	- [warning] rm is permanent, which is different than throwing a folder in the trash.
+	- rm filename-1 filename-2 filename-3
+
+Looking at a File:
+	- less allows you to quickly look at the content of a file
+	- Use q to exit the less page
+	- use the arrows to navigate in the less page
+	
+Download File:
+	download.file("url", destfile = "destination")
+
+Save File:
+	save("data", file = "dir/data.rda")
+
+Load File:
+	load("dir/data.rda")
+
+Save Plot:
+	ggsave("dir/fig.png")
+	
+R Markdown:
+	- https://www.markdowntutorial.com/
+	- https://rmarkdown.rstudio.com/
+	- https://yihui.name/knitr/
+	- Strg + Alt + I --> Create code junk in file
+	- echo=FALSE --> Avoid output code
+	- knitR to output into files
+
+GIT and GITHUB:
+	- https://www.codecademy.com/learn/learn-git
+	- https://guides.github.com/activities/hello-world/
+	- https://try.github.io/levels/1/challenges/1
+	- http://happygitwithr.com/
+	- https://rafalab.github.io/dsbook/git.html#git-overview
+
+	Reasons to use Git and GitHub:
+	- Version-control: Permits us to keep track of changes we made to code, to revert back to previous versions of files, to test ideas using new branches and decide if we want to merge to the original.
+	- Collaboration: On a centralized repo, multiple people may make changes to the code and keep versions synced. A pull request allows anyone to suggest changes to your code.
+	- Sharing code
+
+	- Recap: there are four stages: working directory, staging area, local repository, and upstream repository
+	- Clone an existing upstream repository (copy repo url from clone button, and type "git clone <url>"), and all three local stages are the same as upstream remote.
+	- The working directory is the same as the working directory in Rstudio. When we edit files we only change the files in this place.
+	- git status: tells how the files in the working directory are related to the files in other stages
+	- edits in the staging area are not tracked by the version control system by default - we add a file to the staging area by git add command (git add new-file.txt)
+	- git commit: to commit files from the staging area to local repository, we need to add a message stating what we are doing by git commit -m "something"
+	- git log: keeps track of all the changes we have made to the local repository
+	- git push: allows moving from the local repository to upstream repository, only if you have the permission (e.g. if it is yours)
+	- git fetch: update local repository to  be like the upstream repository, from upstream to local
+	- git merge: make the updated local sync with the working directory and staging area
+	- To change everything in one shot (from upstream to working dir), use git pull (equivalent to combining git fetch + git merge)
+	
+	- Recap: two ways to get started, one is cloning an existing repository, the other is initializing our own
+	- Create our own project on our computer (independent of Git) on our own machine
+	- Create an upstream repo on Github, copy repo's url
+	- Make a local git repository: On the local machine, in the project directory, use git init. Now git starts tracking everything in the local repo.
+	- Now we need to start moving files into our local repo and connect local repo to the upstream remote by  git remote add origin <url>
+	- Note: The first time you push to a new repository, you may also need to use these git push options: git push --set-upstream origin master. If you need to run these arguments but forget to do so, you will get an error with a reminder.
+
+Advanced UNIX commands:
+	- r: recursive. For example, rm -r <directory-name>: remove all files, subdirectories, files in subdirectories, subdirectories in subdirectories, etc.
+	- Combine arguments: rm -rf directory-name
+	- ls -a: Shows all files in the directories including hidden files (e.g. .git file when initializing using git init) (a for all).
+	- ls -l: Returns more information about the files (i.e. l for long).
+	- ls -t: Shows files in chronological order.
+	- ls -r: Reverses the order of how files are shown.
+	- ls -lart: Shows more information for all files in reverse chronological order.
+	
+	-- Getting Help: Use man + command name to get help (e.g. man ls). Note that it is not available for Git Bash. For Git Bash, you can use command 
+		-- help (e.g. ls --help)
+	-- Pipes: Pipes the results of a command to the command after the pipe. Similar to the pipe %>% in R. For example, man ls | less (and its equivalent in Git Bash: ls --help | less). Also useful when listing files with many files (e.g ls -lart | less)
+
+	- * means any number of any combination of characters. Specifically, to list all html files: ls *.html and to remove all html files in a directory: rm *.html.
+	- ? means any single character. For example, to erase all files in the  form file-001.html with the numbers going from 1 to 999: rm file-???.html.
+	- Combined wild cards: rm file-001.* to remove all files of the name file-001 regardless of suffix.
+	
+	Environment Variables and Shells:
+		- In Unix, variables are distinguished from other entities by adding a $ in front. For example, the home directory is stored in $HOME.
+		- See home directory: echo $HOME
+		- See them all: env   
+		- See what shell is being used: echo $SHELL (most common shell is bash)
+		- Change environmental variables: (Don’t actually run this command though!) export PATH = /usr/bin/
+	
+	Executables, Permissions, and File Types
+		- In Unix, all programs are files. They are called executables. So, ls, mv, and git are all files.
+		- To find where these program files are, use which. For example, which git would return /usr/bin/git.
+		- Type ls /usr/bin to see several executable files. There are other directories that hold program files (e.g. Application directory for Mac or Program Files directory in Windows).
+		- Type echo $PATH to see a list of directories separated by ":".
+		- Type the full path to run the user-created executables (e.g ./my-ls).
+		- Regular file -, directory d, executable x. 
+		- This string also indicates the permission of the file: is it readable? writable? executable? Can other users on the system read the file? Can other users on the system edit the file? Can other users execute if the file is executable?
+	
+	Commands You Should Learn:
+		- open/start - On the mac open filename tries to figure out the right application of the filename and open it with that application. This is a very useful command. On Git Bash, you can try start filename. Try opening an R or Rmd file with open or start: it should open with RStudio.
+		- nano - A bare-bones text editor.
+		- ln - create a symbolic link. We do not recommend its use, but you should be familiar with it.
+		- tar - archive files and subdirectories of a directory into one file.
+		- ssh - connect to another computer.
+		- grep - search for patterns in a file.
+		- awk/sed - These are two very powerful commands that permit you to find specific strings in files and change them.
